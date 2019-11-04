@@ -11,7 +11,11 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
+    'language'=>'ru_RU',
     'components' => [
+        'activity'=>['class'=>\app\components\ActivityComponent::class],
+        'day'=>['class'=>\app\components\DayComponents::class],
+        //'lastPage'=>['class'=>\app\components\LastPageComponent::class],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'fdrF4OIcoamwId9TRZ165h7epmxowmj-',
@@ -61,7 +65,7 @@ if (YII_ENV_DEV) {
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => ['*'],
     ];
 
     $config['bootstrap'][] = 'gii';

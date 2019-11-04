@@ -58,11 +58,13 @@ AppAsset::register($this);
     NavBar::end();
     ?>
 
+
     <div class="container">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= Alert::widget() ?>
+        <h4><a href="<?=Yii::$app->session->get('lastPage')?>">Предыдущая страница :<?=Yii::$app->session->get('lastPage')?> </a></h4>
         <?= $content ?>
     </div>
 </div>
