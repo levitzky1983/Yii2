@@ -58,11 +58,13 @@ AppAsset::register($this);
     NavBar::end();
     ?>
 
+
     <div class="container">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= Alert::widget() ?>
+        <h4><a href="<?=$this->params['lastPage']?>">Предыдущая страница :<?=$this->params['lastPage']?> </a></h4>
         <?= $content ?>
     </div>
 </div>
