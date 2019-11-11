@@ -22,4 +22,13 @@ class Day extends BaseModel
             ['isWeekend','boolean']
         ];
     }
+
+    public function compareDayToDate(){
+        $date1 = strtotime($this->date);
+        $date2 = strtotime(date('Y-m-d'));
+        if($date1<$date2){
+            return true;
+        }
+        return false;
+    }
 }

@@ -26,7 +26,11 @@ class DayComponents extends BaseComponent
     public function infoDay(Day $day,$year,$month,$dayOfMonth){
         $day->date = date('d.m.Y',mktime(0,0,0,$month,$dayOfMonth,$year));
         $day->time = date('H:i');
-        $day->titleDay= Day::WEEK[date('w',mktime(0,0,0,$month,$dayOfMonth,$year))-1];
+        $numberDay = date('w',mktime(0,0,0,$month,$dayOfMonth,$year))-1;
+        if($numberDay == -1){
+            $numberDay = 6;
+        }
+        $day->titleDay= Day::WEEK[$numberDay];
         if($day->titleDay === 'Суббота' || $day->titleDay === 'Воскресенье') {
             $day->isWeekend = true;
         } else
