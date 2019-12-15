@@ -16,6 +16,7 @@ use Yii;
  * @property string $timeEnd
  * @property int $isBlocked
  * @property int $isRepeat
+ * @property int $notification
  * @property string $repeatType
  * @property string $email
  * @property string $createDate
@@ -39,7 +40,7 @@ class ActivityBase extends \yii\db\ActiveRecord
     {
         return [
             [['id_author', 'title', 'description', 'date', 'timeBegin', 'timeEnd'], 'required'],
-            [['id_author', 'isBlocked', 'isRepeat'], 'integer'],
+            [['id_author', 'isBlocked', 'isRepeat','notification'], 'integer'],
             [['description'], 'string'],
             [['date', 'timeBegin', 'timeEnd', 'createDate'], 'safe'],
             [['title'], 'string', 'max' => 150],
@@ -67,6 +68,7 @@ class ActivityBase extends \yii\db\ActiveRecord
             'repeatType' => Yii::t('app', 'Repeat Type'),
             'email' => Yii::t('app', 'Email'),
             'createDate' => Yii::t('app', 'Create Date'),
+            'notification'=>Yii::t('app','Notification')
         ];
     }
 

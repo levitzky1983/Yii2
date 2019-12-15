@@ -45,8 +45,14 @@ class ActivityComponent extends BaseComponent
     }
 
     public function getDayActivity($date){
-        $activity = Activity::find()->where(['date' => $date])->all();
+        $activity = Activity::find()->cache(20)->where(['date' => $date])->all();
         return $activity;
+    }
+
+    public function getTodayActivity(){
+        return Activity::find()->andWhere('email is not null')
+            ->andWhere(['notification'=>true])
+            ->andWhere('date=:date',[':date' => date('Y-m-d')])->cache(20)->all();
     }
 
 }

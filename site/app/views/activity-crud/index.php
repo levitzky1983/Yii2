@@ -10,6 +10,7 @@ use yii\grid\GridView;
 $this->title = 'Activities';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<?php if($this->beginCache('activityIndexCrud',['duration'=>10])):?>
 <div class="activity-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -51,5 +52,5 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 
-
+<?php $this->endCache(); endif;?>
 </div>

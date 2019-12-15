@@ -27,7 +27,7 @@ class Activity extends ActivityBase
     const MONTH = 3;
     const REPEAT_TYPE = [self::NEVER => 'Никогда', self::DAY => 'Каждый день', self::WEEK => 'Каждую неделю', self::MONTH => 'Каждый месяц'];
     // public $email;
-    public $useNotification;
+   // public $useNotification;
     public $file;
 
     /* public function beforeSave($insert)
@@ -69,10 +69,10 @@ class Activity extends ActivityBase
             ['date', 'date', 'format' => 'php:Y-m-d'],
             [['timeBegin', 'timeEnd'], 'time', 'format' => 'php:H:i'],
             ['description', 'string', 'min' => 5, 'max' => 300],
-            [['isBlocked', 'isRepeat', 'useNotification'], 'boolean'],
+            [['isBlocked', 'isRepeat', 'notification'], 'boolean'],
             ['email', 'email'],
             ['email', 'required', 'when' => function ($model) {
-                return $model->useNotification;
+                return $model->notification;
             }],
             ['title', rules\BlackTitleRule::class, 'blackList' => ['Спать', 'Есть']],
             ['timeEnd', rules\CompareTimeActivity::class],
@@ -93,8 +93,8 @@ class Activity extends ActivityBase
             'isBlocked' => 'Блокировка события',
             'isRepeat' => 'Повторение события',
             'email' => 'Почта',
-            'file' => 'Добавление файла'
-            //'useNotification'=>
+            'file' => 'Добавление файла',
+            'notification'=>'Уведомлять',
 
         ];
     }

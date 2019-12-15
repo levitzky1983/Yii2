@@ -16,7 +16,7 @@
         <?= $form->field($model, 'isBlocked')->checkbox(); ?>
         <?= $form->field($model, 'isRepeat')->checkbox(); ?>
         <?= $form->field($model, 'repeatType')->dropDownList($model::REPEAT_TYPE); ?>
-        <?= $form->field($model, 'useNotification')->checkbox(); ?>
+        <?= $form->field($model, 'notification')->checkbox(); ?>
         <?= $form->field($model, 'email', ['enableClientValidation' => false, 'enableAjaxValidation' => true]); ?>
         <?= $form->field($model, 'file')->fileInput();?>
         <button type="submit" class="btn-default">Save</button>

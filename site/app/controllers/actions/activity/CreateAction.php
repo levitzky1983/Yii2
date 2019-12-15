@@ -33,6 +33,7 @@ class CreateAction extends BaseAction
             if (!\Yii::$app->activity->createActivity($model)) {
                 print_r($model->getErrors());
             }
+            return $this->controller->redirect('/calendar/createCalendar/');
         }
         return $this->controller->render('create', ['model' => $model]);
     }

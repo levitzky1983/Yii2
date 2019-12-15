@@ -6,6 +6,7 @@ use app\base\BaseController;
 use Yii;
 use app\models\activity;
 use app\models\ActivitySearchCrud;
+use yii\filters\PageCache;
 use yii\web\Controller;
 use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
@@ -47,6 +48,7 @@ class ActivityCrudController extends BaseController
                     'delete' => ['POST'],
                 ],
             ],
+            ['class'=>PageCache::class,'only' => ['index'],'duration' => 10]
         ];
     }
 

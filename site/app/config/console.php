@@ -19,6 +19,7 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'activity' => ['class' => \app\components\ActivityComponent::class],
         'authManager' => ['class'=>'yii\rbac\DbManager'],
         'log' => [
             'targets' => [
@@ -29,6 +30,22 @@ $config = [
             ],
         ],
         'db' => $db,
+        'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
+            // send all mails to a file by default. You have to set
+            // 'useFileTransport' to false and configure a transport
+            // for the mailer to send real emails.
+            'useFileTransport' => false,
+            'enableSwiftMailerLogging' => true,
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => 'smtp.yandex.ru',
+                'username' => 'geekbrains@onedeveloper.ru',
+                'password' => '112358njkz_',
+                'port' => '587',
+                'encryption' => 'tls'
+            ]
+        ],
     ],
     'params' => $params,
     /*

@@ -40,7 +40,7 @@ class ActivitySearchCrud extends activity
      */
     public function search($params)
     {
-        $query = activity::find();
+        $query = activity::find()->cache(20);
 
         // add conditions that should always apply here
 
@@ -66,12 +66,12 @@ class ActivitySearchCrud extends activity
             'isBlocked' => $this->isBlocked,
             'isRepeat' => $this->isRepeat,
             'createDate' => $this->createDate,
-        ]);
+        ])->cache(20);
 
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'description', $this->description])
             ->andFilterWhere(['like', 'repeatType', $this->repeatType])
-            ->andFilterWhere(['like', 'email', $this->email]);
+            ->andFilterWhere(['like', 'email', $this->email])->cache(20);
         $query->with('author');
         return $dataProvider;
     }

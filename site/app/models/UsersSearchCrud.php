@@ -40,7 +40,7 @@ class UsersSearchCrud extends users
      */
     public function search($params)
     {
-        $query = users::find();
+        $query = users::find()->cache(20);
 
         // add conditions that should always apply here
 
@@ -60,14 +60,14 @@ class UsersSearchCrud extends users
         $query->andFilterWhere([
             'id' => $this->id,
             'createDate' => $this->createDate,
-        ]);
+        ])->cache(20);
 
         $query->andFilterWhere(['like', 'userName', $this->userName])
             ->andFilterWhere(['like', 'login', $this->login])
             ->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'passwordHash', $this->passwordHash])
             ->andFilterWhere(['like', 'authKey', $this->authKey])
-            ->andFilterWhere(['like', 'token', $this->token]);
+            ->andFilterWhere(['like', 'token', $this->token])->cache(20);
 
         return $dataProvider;
     }

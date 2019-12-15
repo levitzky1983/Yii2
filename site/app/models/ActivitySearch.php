@@ -10,7 +10,7 @@ use yii\helpers\ArrayHelper;
 class ActivitySearch extends Activity
 {
     public function search($params=[]):ActiveDataProvider {
-        $query = Activity::find();
+        $query = Activity::find()->cache(20);
         $this->load($params);
         $provider = new ActiveDataProvider( [
             'query'=>$query,
